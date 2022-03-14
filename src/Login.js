@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import api from './api';
-import { useSetClient } from './ClientContext';
+import { useClient, useSetClient } from './ClientContext';
 import { useSetToken } from './TokenContext';
 
 export default function Login() {
 	const setToken = useSetToken();
+	const client = useClient();
 	const setClient = useSetClient();
-	const navigate = useNavigate();
 
 	const [clientId, setClientId] = useState('');
 	const [clientSecret, setClientSecret] = useState('');
@@ -26,12 +26,15 @@ export default function Login() {
 			});
 			setToken(token);
 			setClient(client);
-			navigate('/');
 		} catch (err) {
 			setError(err.response?.data?.message ?? 'Failed to log in');
 			setIsPending(false);
 		}
 	};
+
+	if (client) {
+		return <Navigate replace to="/" />;
+	}
 
 	return (
 		<>
