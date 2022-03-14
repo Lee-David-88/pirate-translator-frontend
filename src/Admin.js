@@ -19,35 +19,39 @@ export default function Admin() {
 	return (
 		<>
 			<h1>Admin</h1>
-			<p>Client:</p>
-			<pre>{JSON.stringify(client, null, '\t')}</pre>
-			<h2 className="mt-1">Metrics</h2>
-			{metrics ? (
-				<table>
-					<thead>
-						<tr>
-							<th align="left">Method</th>
-							<th align="left">Path</th>
-							<th align="left">Date</th>
-							<th align="right">Requests</th>
-						</tr>
-					</thead>
-					<tbody>
-						{metrics.map((metric, i) => (
-							<tr key={i}>
-								<th scope="row" align="left">
-									{metric.method}
-								</th>
-								<th scope="row" align="left">
-									{metric.path}
-								</th>
-								<td align="left">{metric.date}</td>
-								<td align="right">{metric.numRequests}</td>
+			<p>
+				<h2>Client</h2>
+				<pre>{JSON.stringify(client, null, '\t')}</pre>
+			</p>
+			<p>
+				<h2>Metrics</h2>
+				{metrics ? (
+					<table>
+						<thead>
+							<tr>
+								<th align="left">Method</th>
+								<th align="left">Path</th>
+								<th align="left">Date</th>
+								<th align="right">Requests</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
-			) : null}
+						</thead>
+						<tbody>
+							{metrics.map((metric, i) => (
+								<tr key={i}>
+									<th scope="row" align="left">
+										{metric.method}
+									</th>
+									<th scope="row" align="left">
+										{metric.path}
+									</th>
+									<td align="left">{metric.date}</td>
+									<td align="right">{metric.numRequests}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				) : null}
+			</p>
 		</>
 	);
 }

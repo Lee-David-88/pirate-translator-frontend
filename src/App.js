@@ -8,6 +8,7 @@ import api from './api';
 import Home from './Home';
 import Login from './Login';
 import Admin from './Admin';
+import Documentation from './Documentation';
 
 export default function App() {
 	const isToken = useIsToken();
@@ -34,6 +35,7 @@ export default function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/admin" element={<Admin />} />
+				<Route path="/docs" element={<Documentation />} />
 			</Routes>
 		</BrowserRouter>
 	);

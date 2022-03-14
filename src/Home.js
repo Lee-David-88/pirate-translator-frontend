@@ -18,6 +18,7 @@ export default function Home() {
 					<Link to="/admin">Admin</Link>
 				</p>
 			) : null}
+			<Link to="/docs">Documentation</Link>
 		</>
 	);
 }

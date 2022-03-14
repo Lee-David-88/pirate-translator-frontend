@@ -39,7 +39,7 @@ export default function Login() {
 	return (
 		<>
 			<h1>Login</h1>
-			<p className="mt-1">
+			<p>
 				<input
 					value={clientId}
 					onChange={(e) => setClientId(e.target.value)}
@@ -47,7 +47,7 @@ export default function Login() {
 					placeholder="Client ID"
 				/>
 			</p>
-			<p className="mt-1">
+			<p>
 				<input
 					value={clientSecret}
 					onChange={(e) => setClientSecret(e.target.value)}
@@ -55,16 +55,12 @@ export default function Login() {
 					placeholder="Client Secret"
 				/>
 			</p>
-			<p className="mt-1">
+			<p>
 				<button disabled={isPending} onClick={logIn}>
 					Login
 				</button>
 			</p>
-			{error ? (
-				<p style={{ color: 'red' }} className="mt-1">
-					{error}
-				</p>
-			) : null}
+			{error ? <p style={{ color: 'red' }}>{error}</p> : null}
 		</>
 	);
 }
