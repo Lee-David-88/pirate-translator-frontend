@@ -1,103 +1,293 @@
+import { Link } from 'react-router-dom';
+import SwaggerUI from 'swagger-ui-react';
+import 'swagger-ui-react/swagger-ui.css';
+
+const spec = {
+	openapi: '3.0.3',
+	info: {
+		title: 'Pirate Translator',
+		description: 'Translates text to Pirate speak using AI.',
+		version: '0.1.0',
+	},
+	servers: [
+		{
+			url: process.env.REACT_APP_API_BASE,
+			description: 'Production server',
+		},
+	],
+	tags: [
+		{
+			name: 'clients',
+			description: 'Clients with access to the API',
+		},
+		{
+			name: 'metrics',
+			description: 'Measurements of how the API itself is being used',
+		},
+	],
+	components: {
+		securitySchemes: {
+			bearerAuth: {
+				type: 'http',
+				scheme: 'bearer',
+				bearerFormat: 'JWT',
+			},
+		},
+		schemas: {
+			Client: {
+				type: 'object',
+				properties: {
+					id: {
+						type: 'string',
+						readOnly: true,
+					},
+					name: {
+						type: 'string',
+						nullable: true,
+					},
+					secret: {
+						type: 'string',
+						format: 'password',
+						readOnly: true,
+					},
+					isAdmin: {
+						type: 'boolean',
+						readOnly: true,
+					},
+					createdAt: {
+						type: 'string',
+						format: 'date-time',
+						readOnly: true,
+					},
+					updatedAt: {
+						type: 'string',
+						format: 'date-time',
+						readOnly: true,
+					},
+				},
+				required: ['id', 'name', 'isAdmin', 'createdAt', 'updatedAt'],
+			},
+			Metric: {
+				type: 'object',
+				properties: {
+					method: {
+						type: 'string',
+						readOnly: true,
+					},
+					path: {
+						type: 'string',
+						readOnly: true,
+					},
+					date: {
+						type: 'string',
+						format: 'date',
+						readOnly: true,
+					},
+					numRequests: {
+						type: 'integer',
+						readOnly: true,
+						minimum: 0,
+					},
+					createdAt: {
+						type: 'string',
+						format: 'date-time',
+						readOnly: true,
+					},
+					updatedAt: {
+						type: 'string',
+						format: 'date-time',
+						readOnly: true,
+					},
+				},
+				required: [
+					'method',
+					'path',
+					'date',
+					'numRequests',
+					'createdAt',
+					'updatedAt',
+				],
+			},
+		},
+	},
+	security: [
+		{
+			bearerAuth: [],
+		},
+	],
+	paths: {
+		'/clients': {
+			get: {
+				tags: ['clients'],
+				summary: 'List all existing clients',
+				responses: {
+					200: {
+						content: {
+							'application/json': {
+								schema: {
+									type: 'array',
+									items: {
+										$ref: '#/components/schemas/Client',
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			post: {
+				tags: ['clients'],
+				summary: 'Create a new client',
+				requestBody: {
+					content: {
+						'application/json': {
+							schema: {
+								$ref: '#/components/schemas/Client',
+							},
+						},
+					},
+				},
+				responses: {
+					200: {
+						content: {
+							'application/json': {
+								schema: {
+									$ref: '#/components/schemas/Client',
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		'/clients/{clientId}': {
+			delete: {
+				tags: ['clients'],
+				summary: 'Delete a client',
+				parameters: [
+					{
+						name: 'clientId',
+						in: 'path',
+						schema: {
+							type: 'string',
+						},
+						required: true,
+					},
+				],
+				responses: {
+					200: {
+						content: {
+							'application/json': {
+								schema: {
+									type: 'object',
+									properties: {
+										message: {
+											type: 'string',
+										},
+									},
+									required: ['message'],
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		'/clients/self': {
+			get: {
+				tags: ['clients'],
+				summary: 'Get the current authorized client',
+				responses: {
+					200: {
+						content: {
+							'application/json': {
+								schema: {
+									$ref: '#/components/schemas/Client',
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		'/login': {
+			post: {
+				tags: ['clients'],
+				summary: 'Generate a JWT from client credentials',
+				security: [],
+				requestBody: {
+					content: {
+						'application/json': {
+							schema: {
+								type: 'object',
+								properties: {
+									clientId: {
+										type: 'string',
+									},
+									clientSecret: {
+										type: 'string',
+										format: 'password',
+									},
+								},
+								required: ['clientId', 'clientSecret'],
+							},
+						},
+					},
+				},
+				responses: {
+					200: {
+						content: {
+							'application/json': {
+								schema: {
+									type: 'object',
+									properties: {
+										token: {
+											type: 'string',
+											format: 'password',
+										},
+										client: {
+											$ref: '#/components/schemas/Client',
+										},
+									},
+									required: ['token', 'client'],
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		'/metrics': {
+			get: {
+				tags: ['metrics'],
+				summary: 'Get all metrics',
+				responses: {
+					200: {
+						content: {
+							'application/json': {
+								schema: {
+									type: 'array',
+									items: {
+										$ref: '#/components/schemas/Metric',
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	},
+};
+
 export default function Documentation() {
 	return (
 		<>
 			<h1>Documentation</h1>
 			<p>
-				The base path for the API is: <code>http://api.piratetranslate.me</code>
+				<Link to="/">Home</Link>
 			</p>
-			<p>
-				All endpoints &mdash; except for logging in &mdash; require the{' '}
-				<code>Authorization</code> header to be set to{' '}
-				<code>Bearer [token]</code>
-			</p>
-			<p>
-				<h2>Client Object</h2>
-				<pre>
-					{`{
-    "id": string,
-    "name": string?,
-    "secret": string,
-    "isAdmin": boolean,
-    "createdAt": string,
-    "updatedAt": string
-}`}
-				</pre>
-			</p>
-			<p>
-				<h2>Metric Object</h2>
-				<pre>
-					{`{
-    "method": string,
-    "path": string,
-    "date": string,
-    "numRequests": number,
-    "createdAt": string,
-    "updatedAt": string
-}`}
-				</pre>
-			</p>
-			<p>
-				<h2>POST /login</h2>
-				Generates a JWT from your credentials.
-				<h3>Request Body</h3>
-				<pre>
-					{`{
-    "clientId": string,
-    "clientSecret": string
-}
-`}
-				</pre>
-				<h3>Response Body</h3>
-				<pre>
-					{`{
-    "token": string,
-    "client": Client
-}
-`}
-				</pre>
-			</p>
-			<p>
-				<h2>GET /clients</h2>
-				Lists all existing clients. Can only be called by an admin client.
-				<h3>Response Body</h3>
-				<pre>{`[Client]`}</pre>
-			</p>
-			<p>
-				<h2>GET /clients/self</h2>
-				Gets the object for the authenticated client.
-				<h3>Response Body</h3>
-				<pre>{`Client`}</pre>
-			</p>
-			<p>
-				<h2>POST /clients</h2>
-				Creates a new client and returns it (including the secret). Can only be
-				called by an admin client.
-				<h3>Request Body</h3>
-				<pre>
-					{`{
-    "name": string
-}
-`}
-				</pre>
-				<h3>Response Body</h3>
-				<pre>{`Client`}</pre>
-			</p>
-			<p>
-				<h2>DELETE /clients/:id</h2>
-				Deletes a client by its id. Can only be called by an admin client.
-				<h3>Response Body</h3>
-				<pre>{`{
-    "message": string
-}
-`}</pre>
-			</p>
-			<p>
-				<h2>GET /metrics</h2>
-				Gets all existing endpoint metrics. Can only be called by an admin
-				client.
-				<h3>Response Body</h3>
-				<pre>{`[Metric]`}</pre>
-			</p>
+			<SwaggerUI spec={spec} />
 		</>
 	);
 }
