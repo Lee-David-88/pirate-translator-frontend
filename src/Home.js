@@ -5,7 +5,7 @@ import { useClient } from './ClientContext';
 export default function Home() {
 	const client = useClient();
 
-	const [text] = useState('');
+	const [text, setText] = useState('');
 	const [promptString, setPromptString] = useState('');
 	const [isPending, setIsPending] = useState(false);
 	const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ export default function Home() {
 			} = await api.post('/translations', {
 				promptString
 			});
-			setPromptString(text);
+			setText(text);
 		} catch (err) {
 			setError(err.response?.data?.message ?? 'Failed to translate');
 			setIsPending(false);
