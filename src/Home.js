@@ -6,7 +6,7 @@ export default function Home() {
 	const client = useClient();
 
 	const [text, setText] = useState('');
-	const [promptString, setPromptString] = useState('');
+	const [prompt, setPrompt] = useState('');
 	const [isPending, setIsPending] = useState(false);
 	const [error, setError] = useState(null);
 
@@ -44,8 +44,8 @@ export default function Home() {
 			
 			<p>
 				<input
-					value={promptString}
-					onChange={(e) => setPromptString(e.target.value)}
+					value={prompt}
+					onChange={(e) => setPrompt(e.target.value)}
 					type="text"
 					placeholder="Enter The Prompt You Wish To Translate Here"
 				/>
