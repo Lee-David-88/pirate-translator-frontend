@@ -22,8 +22,8 @@ export default function Home() {
 			setText(text);
 		} catch (err) {
 			setError(err.response?.data?.message ?? 'Failed to translate');
-			setIsPending(false);
 		}
+		setIsPending(false);
 	};
 
 	if (!client) {
