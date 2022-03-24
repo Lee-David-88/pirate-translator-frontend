@@ -17,7 +17,7 @@ export default function Home() {
 			const {
 				data: { text },
 			} = await api.post('/translations', {
-				prompt
+				prompt,
 			});
 			setText(text);
 		} catch (err) {
@@ -25,7 +25,6 @@ export default function Home() {
 			setIsPending(false);
 		}
 	};
-
 
 	if (!client) {
 		return <Navigate replace to="/login" />;
@@ -41,7 +40,7 @@ export default function Home() {
 				</p>
 			) : null}
 			<Link to="/docs">Documentation</Link>
-			
+
 			<p>
 				<input
 					value={prompt}
