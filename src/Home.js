@@ -1,9 +1,13 @@
 import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import api from './api';
-import { useClient } from './ClientContext';
+import { useClient, useSetClient } from './ClientContext';
+import { useSetToken } from './TokenContext';
+
 export default function Home() {
 	const client = useClient();
+	const setToken = useSetToken();
+	const setClient = useSetClient();
 
 	const [text, setText] = useState('');
 	const [prompt, setPrompt] = useState('');
@@ -34,13 +38,22 @@ export default function Home() {
 		<>
 			<h1>Pirate Translator</h1>
 			<p>Client ID: {client.id}</p>
+			<p>
+				<button
+					onClick={() => {
+						setToken(null);
+						setClient(null);
+					}}
+				>
+					Log out
+				</button>
+			</p>
 			{client.isAdmin ? (
 				<p>
 					<Link to="/admin">Admin</Link>
 				</p>
 			) : null}
 			<Link to="/docs">Documentation</Link>
-
 			<p>
 				<input
 					value={prompt}
