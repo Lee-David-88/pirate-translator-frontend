@@ -46,7 +46,7 @@ export default function Home() {
 					value={prompt}
 					onChange={(e) => setPrompt(e.target.value)}
 					type="text"
-					placeholder="Enter The Prompt You Wish To Translate Here"
+					placeholder="Prompt to translate"
 				/>
 			</p>
 			<p>
