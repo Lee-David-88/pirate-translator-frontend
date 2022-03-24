@@ -17,7 +17,7 @@ export default function Home() {
 			const {
 				data: { text },
 			} = await api.post('/translations', {
-				promptString
+				prompt
 			});
 			setText(text);
 		} catch (err) {
