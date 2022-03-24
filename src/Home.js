@@ -2,13 +2,11 @@ import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import api from './api';
 import { useClient } from './ClientContext';
-import { useSetPrompt } from './PromptContext';
-
 export default function Home() {
 	const client = useClient();
-	const setPrompt = useSetPrompt();
+	const text = "";
 
-	const [promptId, setPromptId] = useState(false);
+	const [promptString, setPromptString] = useState(false);
 	const [isPending, setIsPending] = useState(false);
 	const [error, setError] = useState(null);
 
@@ -17,11 +15,11 @@ export default function Home() {
 		setError(null);
 		try {
 			const {
-				data: { prompt },
+				data: { text },
 			} = await api.post('/translations', {
-				promptId
+				promptString
 			});
-			setPrompt(prompt);
+			setPromptString(text);
 		} catch (err) {
 			setError(err.response?.data?.message ?? 'Failed to translate');
 			setIsPending(false);
@@ -46,8 +44,8 @@ export default function Home() {
 			
 			<p>
 				<input
-					value={promptId}
-					onChange={(e) => setPromptId(e.target.value)}
+					value={promptString}
+					onChange={(e) => setPromptString(e.target.value)}
 					type="text"
 					placeholder="Enter The Prompt You Wish To Translate Here"
 				/>
@@ -58,6 +56,7 @@ export default function Home() {
 				</button>
 				{error ? <p style={{ color: 'red' }}>{error}</p> : null}
 			</p>
+			<p>{text}</p>
 		</>
 	);
 }
