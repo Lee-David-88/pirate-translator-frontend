@@ -4,9 +4,9 @@ import api from './api';
 import { useClient } from './ClientContext';
 export default function Home() {
 	const client = useClient();
-	const text = "";
 
-	const [promptString, setPromptString] = useState(false);
+	const [text] = useState('');
+	const [promptString, setPromptString] = useState('');
 	const [isPending, setIsPending] = useState(false);
 	const [error, setError] = useState(null);
 
