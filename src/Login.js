@@ -52,7 +52,7 @@ export default function Login() {
 					<input
 						value={clientSecret}
 						onChange={(e) => setClientSecret(e.target.value)}
-						type="text"
+						type="password"
 						placeholder="Client Secret"
 					/>
 				</p>
