@@ -38,3 +38,67 @@ button {
 p {
 	margin-top: 1rem;
 }
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 300px;
+	height: 400px;
+	border-style: solid;
+	color: #acdfeb;
+	text-align: center;
+	padding: 10px;
+	background-color: white;
+}
+
+.center h1 {
+	color: #003b61;
+	padding: 20px;
+}
+
+.center input {
+	border: none;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid;
+	border-color: #acdfeb;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: black;
+}
+
+.center button {
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid;
+	border-color: #acdfeb;
+	padding: 14px 10px;
+	width: 150px;
+	outline: none;
+	color: black;
+}
+
+body {
+	background: linear-gradient(270deg, #acdfeb, #30b1ce, #29a4c3, #318db2, #046997, #003b61);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
