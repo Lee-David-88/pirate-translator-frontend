@@ -41,7 +41,7 @@ p {
 
 .center {
 	position: absolute;
-	top: 50%;
+	top: 55%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 300px;
@@ -62,7 +62,7 @@ p {
 	border: none;
 	background: none;
 	display: block;
-	margin: 20px auto;
+	margin: 30px auto;
 	border: 2px solid;
 	border-color: #acdfeb;
 	padding: 14px 10px;
@@ -74,7 +74,7 @@ p {
 .center button {
 	background: none;
 	display: block;
-	margin: 20px auto;
+	margin: 50px auto;
 	text-align: center;
 	border: 2px solid;
 	border-color: #acdfeb;
@@ -93,8 +93,10 @@ body {
 
 .main-logo {
 	display: block;
-  	margin-left: auto;
-  	margin-right: auto;
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 @keyframes gradient {
