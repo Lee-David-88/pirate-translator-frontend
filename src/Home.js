@@ -27,9 +27,9 @@ export default function Home() {
 	};
 
 
-	if (!client) {
-		return <Navigate replace to="/login" />;
-	}
+	// if (!client) {
+	// 	return <Navigate replace to="/login" />;
+	// }
 
 	return (
 		<>

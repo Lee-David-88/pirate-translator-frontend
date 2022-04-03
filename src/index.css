@@ -91,6 +91,12 @@ body {
 	height: 100vh;
 }
 
+.main-logo {
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;

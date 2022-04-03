@@ -38,6 +38,7 @@ export default function Login() {
 
 	return (
 		<>
+			<img class="main-logo" src="piratetext.png"></img>
 			<div class="center">
 				<h1>Login</h1>
 				<p>
