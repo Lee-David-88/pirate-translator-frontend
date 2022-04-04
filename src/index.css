@@ -42,7 +42,7 @@ p {
 	margin-top: 1rem;
 }
 
-.center {
+.center-login {
 	position: absolute;
   	text-align: center;
 	top: 60%;
@@ -55,21 +55,21 @@ p {
 	height: 600px;
 }
 
-.content {
+.content-login {
 	position: absolute;
   	top: 40%;
   	left: 50%;
   	transform: translate(-50%, -50%);
 }
 
-.content h1 {
+.content-login h1 {
 	color: #6E260E;
 	font-size: 40px;
 	padding: 30px 10px 10px 10px;
 	font-family: "UnifrakturMaguntia";
 }
 
-.content input[type='text'], input[type='password']{
+.content-login input[type='text'], input[type='password']{
 	background: white;
 	display: block;
 	margin: 40px auto;
@@ -80,10 +80,9 @@ p {
 	font-family: "UnifrakturMaguntia";
 }
 
-.content button {
+.content-login button {
 	background: white;
 	display: block;
-	border: none;
 	margin: 25px auto;
 	font-size: 25px;
 	width: 150px;
@@ -92,8 +91,56 @@ p {
 	font-family: "UnifrakturMaguntia";
 }
 
+.center-home {
+	position: absolute;
+  	text-align: center;
+	top: 55%;
+  	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.map {
+	width: 1000px;
+	height: 500px;
+}
+
+.content-home {
+	position: absolute;
+  	top: 40%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+.content-home input {
+	background: white;
+	display: block;
+	margin: 20px auto;
+	font-size: 25px;
+	width: 550px;
+	outline: none;
+	color: #6E260E;
+}
+
+.content-home button {
+	background: white;
+	display: block;
+	margin: 25px auto;
+	font-size: 25px;
+	width: 150px;
+	outline: none;
+	border-radius: 0.25em;
+	color: #6E260E;
+	font-family: "UnifrakturMaguntia";
+}
+
+
 .text {
 	font-family: "UnifrakturMaguntia";
+}
+
+.output-text {
+	font-family: "UnifrakturMaguntia";
+	font-size: 20px;
 }
 
 body {

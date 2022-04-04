@@ -53,9 +53,9 @@ export default function Login() {
 				</Container>
 			</Navbar>
 			<img class="main-logo" src="piratetext.png" alt="Pirate text title"></img>
-			<div class="center">
+			<div class="center-login">
 				<img class="background" src="piratepaper.png" alt="Pirate paper"></img>
-				<div class="content">
+				<div class="content-login">
 					<h1>Login</h1>
 					<p>
 						<input
