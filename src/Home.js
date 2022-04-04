@@ -47,6 +47,7 @@ export default function Home() {
 					<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
 						<Nav.Link href="/docs">Documentation</Nav.Link>
+						<Nav.Link href="">Client ID: 123456</Nav.Link>
 					</Nav>
 					</Navbar.Collapse>
 				</Container>
