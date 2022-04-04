@@ -1,10 +1,15 @@
 import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import api from './api';
+
 import { useClient } from './ClientContext';
 import { Navbar, Nav, NavDropdown, Container, Offcanvas, Form, FormControl, Button} from "react-bootstrap";
+import { useSetToken } from './TokenContext';
+
 export default function Home() {
 	const client = useClient();
+	const setToken = useSetToken();
+	const setClient = useSetClient();
 
 	const [text, setText] = useState('');
 	const [prompt, setPrompt] = useState('');
@@ -18,15 +23,14 @@ export default function Home() {
 			const {
 				data: { text },
 			} = await api.post('/translations', {
-				prompt
+				prompt,
 			});
 			setText(text);
 		} catch (err) {
 			setError(err.response?.data?.message ?? 'Failed to translate');
-			setIsPending(false);
 		}
+		setIsPending(false);
 	};
-
 
 	 if (!client) {
 	 	return <Navigate replace to="/login" />;
