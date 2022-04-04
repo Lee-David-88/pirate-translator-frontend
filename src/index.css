@@ -92,15 +92,24 @@ p {
 	font-family: "UnifrakturMaguntia";
 }
 
+.text {
+	font-family: "UnifrakturMaguntia";
+}
+
 body {
+	margin: 0px;
+}
+
+.background-body {
+	position:absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
 	background: linear-gradient(270deg, #acdfeb, #30b1ce, #29a4c3, #318db2, #046997, #003b61);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;
-}
-
-.text {
-	font-family: "UnifrakturMaguntia";
 }
 
 .main-logo {
