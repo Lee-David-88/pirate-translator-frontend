@@ -1,8 +1,9 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import api from './api';
 import { useClient } from './ClientContext';
-import { Navbar, Nav, NavDropdown, Container, Offcanvas, Form, FormControl, Button} from "react-bootstrap";
+import { Navbar, Nav, Container } from 'react-bootstrap';
+
 export default function Home() {
 	const client = useClient();
 
@@ -26,7 +27,6 @@ export default function Home() {
 			setIsPending(false);
 		}
 	};
-
 
 	if (!client) {
 		return <Navigate replace to="/login" />;

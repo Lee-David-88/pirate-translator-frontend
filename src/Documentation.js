@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import SwaggerUI from 'swagger-ui-react';
 import 'swagger-ui-react/swagger-ui.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, NavDropdown, Container, Offcanvas, Form, FormControl, Button} from "react-bootstrap";
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 const spec = {
 	openapi: '3.0.3',
@@ -286,16 +285,16 @@ export default function Documentation() {
 	return (
 		<>
 			<Navbar expand="lg">
-  			<Container>
-    			<Navbar.Brand href="/login">Documentation</Navbar.Brand>
-    			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-    			<Navbar.Collapse id="basic-navbar-nav">
-      			<Nav className="me-auto">
-        			<Nav.Link href="/">Home</Nav.Link>
-      			</Nav>
-    			</Navbar.Collapse>
-  			</Container>
-		</Navbar>
+				<Container>
+					<Navbar.Brand href="/login">Documentation</Navbar.Brand>
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse id="basic-navbar-nav">
+						<Nav className="me-auto">
+							<Nav.Link href="/">Home</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
 			<SwaggerUI spec={spec} />
 		</>
 	);
