@@ -8,8 +8,6 @@ import { useSetToken } from './TokenContext';
 
 export default function Home() {
 	const client = useClient();
-	const setToken = useSetToken();
-	const setClient = useSetClient();
 
 	const [text, setText] = useState('');
 	const [prompt, setPrompt] = useState('');
