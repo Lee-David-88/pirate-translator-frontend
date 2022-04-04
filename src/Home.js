@@ -32,40 +32,43 @@ export default function Home() {
 	// 	return <Navigate replace to="/login" />;
 	// }
 
+	//{client.isAdmin ? (
+	//	<Nav.Link href="/admin">Admin</Nav.Link>
+	//	) : null} line 49
+
+	// <p>Client ID: {client.id}</p> line 54
 	return (
 		<>
 		<div class="background-body">
-			<h1 class="text">Pirate Translator</h1>
-			<Navbar expand="lg">
-				<Container>
-					<Navbar.Brand href="/login">Pirate Translator</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="me-auto">
-						<Nav.Link href="/docs">Documentation</Nav.Link>
-						{client.isAdmin ? (
-						<Nav.Link href="/admin">Admin</Nav.Link>
-					) : null}
-					</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-			<p>Client ID: {client.id}</p>
-			<p>
-				<input
-					value={prompt}
-					onChange={(e) => setPrompt(e.target.value)}
-					type="text"
-					placeholder="Enter The Prompt You Wish To Translate Here"
-				/>
+		<Navbar expand="lg">
+  			<Container>
+    			<Navbar.Brand href="/login">Pirate Translator</Navbar.Brand>
+    			<Navbar.Toggle aria-controls="basic-navbar-nav" />
+    			<Navbar.Collapse id="basic-navbar-nav">
+      			<Nav className="me-auto">
+        			<Nav.Link href="/docs">Documentation</Nav.Link>
+      			</Nav>
+    			</Navbar.Collapse>
+  			</Container>
+		</Navbar>
+		<img class="main-logo" src="piratetext.png"></img>
+		<div class="center">
+		<p>
+			<input
+				value={prompt}
+				onChange={(e) => setPrompt(e.target.value)}
+				type="text"
+				placeholder="Enter The Prompt You Wish To Translate Here"
+			/>
+		</p>
+		<p>
+			<button disabled={isPending} onClick={translate}>
+				Translate
+			</button>
+			{error ? <p style={{ color: 'red' }}>{error}</p> : null}
 			</p>
-			<p>
-				<button disabled={isPending} onClick={translate}>
-					Translate
-				</button>
-				{error ? <p style={{ color: 'red' }}>{error}</p> : null}
-				</p>
-				<p class="text">{text}</p>
+			<p class="text">{text}</p>
+			</div>
 			</div>
 		</>
 	);
