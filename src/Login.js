@@ -3,6 +3,8 @@ import { Navigate } from 'react-router-dom';
 import api from './api';
 import { useClient, useSetClient } from './ClientContext';
 import { useSetToken } from './TokenContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav, NavDropdown, Container, Offcanvas, Form, FormControl, Button} from "react-bootstrap";
 
 export default function Login() {
 	const setToken = useSetToken();
@@ -33,34 +35,53 @@ export default function Login() {
 	};
 
 	if (client) {
-		return <Navigate replace to="/" />;
+		return <Navigate replace to="/"/>;
 	}
 
 	return (
 		<>
-			<h1>Login</h1>
-			<p>
-				<input
-					value={clientId}
-					onChange={(e) => setClientId(e.target.value)}
-					type="text"
-					placeholder="Client ID"
-				/>
-			</p>
-			<p>
-				<input
-					value={clientSecret}
-					onChange={(e) => setClientSecret(e.target.value)}
-					type="text"
-					placeholder="Client Secret"
-				/>
-			</p>
-			<p>
-				<button disabled={isPending} onClick={logIn}>
-					Login
-				</button>
-			</p>
-			{error ? <p style={{ color: 'red' }}>{error}</p> : null}
+		<div class="background-body">
+			<Navbar expand="lg">
+				<Container>
+					<Navbar.Brand href="/login">Pirate Translator</Navbar.Brand>
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse id="basic-navbar-nav">
+					<Nav className="me-auto">
+					<Nav.Link href="/docs">Documentation</Nav.Link>
+					</Nav>
+				</Navbar.Collapse>
+				</Container>
+			</Navbar>
+			<img class="main-logo" src="piratetext.png" alt="Pirate text title"></img>
+			<div class="center-login">
+				<img class="background" src="piratepaper.png" alt="Pirate paper"></img>
+				<div class="content-login">
+					<h1>Login</h1>
+					<p>
+						<input
+							value={clientId}
+							onChange={(e) => setClientId(e.target.value)}
+							type="text"
+							placeholder="Client ID"
+						/>
+					</p>
+					<p>
+						<input
+							value={clientSecret}
+							onChange={(e) => setClientSecret(e.target.value)}
+							type="password"
+							placeholder="Client Secret"
+						/>
+					</p>
+					<p>
+						<button disabled={isPending} onClick={logIn}>
+							Login
+						</button>
+					</p>
+					{error ? <p style={{ color: 'red' }}>{error}</p> : null}
+				</div>
+			</div>
+		</div>
 		</>
 	);
 }
