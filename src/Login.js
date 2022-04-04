@@ -35,7 +35,7 @@ export default function Login() {
 	};
 
 	if (client) {
-		return <Navigate replace to="/" />;
+		return <Navigate replace to="/"/>;
 	}
 
 	return (
@@ -52,7 +52,7 @@ export default function Login() {
   			</Container>
 		</Navbar>
 		<img class="main-logo" src="piratetext.png"></img>
-		<div class="container">
+		<div class="center">
 			<img class="background" src="piratepaper.png"></img>
 			<div class="content">
 				<h1>Login</h1>

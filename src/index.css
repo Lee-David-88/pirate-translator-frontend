@@ -42,10 +42,12 @@ p {
 	margin-top: 1rem;
 }
 
-.container {
-	position: relative;
+.center {
+	position: absolute;
   	text-align: center;
-	margin: 15%;
+	top: 60%;
+  	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .background {
