@@ -55,21 +55,23 @@ export default function Home() {
 			<img class="main-logo" src="piratetext.png"></img>
 			<div class="center">
 				<img class="map" src="piratemap.png" alt="Pirate map"></img>
-				<p>
-					<input
-						value={prompt}
-						onChange={(e) => setPrompt(e.target.value)}
-						type="text"
-						placeholder="Enter The Prompt You Wish To Translate Here"
-					/>
-				</p>
-				<p>
-					<button class="text" disabled={isPending} onClick={translate}>
-						Translate
-					</button>
-					{error ? <p style={{ color: 'red' }}>{error}</p> : null}
-				</p>
-				<p class="output-text">{text}</p>
+				<div class="content-home">
+					<p>
+						<input
+							value={prompt}
+							onChange={(e) => setPrompt(e.target.value)}
+							type="text"
+							placeholder="Enter The Prompt You Wish To Translate Here"
+						/>
+					</p>
+					<p>
+						<button class="text" disabled={isPending} onClick={translate}>
+							Translate
+						</button>
+						{error ? <p style={{ color: 'red' }}>{error}</p> : null}
+					</p>
+					<p class="output-text">{text}</p>
+				</div>
 			</div>
 		</div>
 		</>
