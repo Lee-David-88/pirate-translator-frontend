@@ -29,11 +29,10 @@ export default function App() {
 		return <p>Loading...</p>;
 	}
 
-	// changed path from blank to home
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/home" element={<Home />} />
+				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/admin" element={<Admin />} />
 				<Route path="/docs" element={<Documentation />} />

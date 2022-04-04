@@ -28,52 +28,47 @@ export default function Home() {
 	};
 
 
-	// if (!client) {
-	// 	return <Navigate replace to="/login" />;
-	// }
+	 if (!client) {
+	 	return <Navigate replace to="/login" />;
+	 }
 
-	//{client.isAdmin ? (
-	//	<Nav.Link href="/admin">Admin</Nav.Link>
-	//	) : null} line 49
-
-	// <p>Client ID: {client.id}</p> line 54
 	return (
 		<>
 		<div class="background-body">
-			<Navbar expand="lg">
-				<Container>
-					<Navbar.Brand href="/login">Pirate Translator</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="me-auto">
-						<Nav.Link href="/docs">Documentation</Nav.Link>
-						<Nav.Link href="">Client ID: 123456</Nav.Link>
-					</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-			<img class="main-logo" src="piratetext.png" alt="Pirate text title"></img>
-			<div class="center-home">
-				<img class="map" src="piratemap.png" alt="Pirate map"></img>
-				<div class="content-home">
-					<p>
-						<input
-							value={prompt}
-							onChange={(e) => setPrompt(e.target.value)}
-							type="text"
-							placeholder="Enter The Prompt You Wish To Translate Here"
-						/>
-					</p>
-					<p>
-						<button class="text" disabled={isPending} onClick={translate}>
-							Translate
-						</button>
-						{error ? <p style={{ color: 'red' }}>{error}</p> : null}
-						</p>
-						<p class="output-text">{text}</p>
-				</div>
+		<Navbar expand="lg">
+  			<Container>
+    			<Navbar.Brand href="/login">Pirate Translator</Navbar.Brand>
+    			<Navbar.Toggle aria-controls="basic-navbar-nav" />
+    			<Navbar.Collapse id="basic-navbar-nav">
+      			<Nav className="me-auto">
+        			<Nav.Link href="/docs">Documentation</Nav.Link>
+					{client.isAdmin ? (
+						<Nav.Link href="/admin">Admin</Nav.Link>
+					) : null}
+					<Nav.Link href="">Client ID: {client.id}</Nav.Link>
+      			</Nav>
+    			</Navbar.Collapse>
+  			</Container>
+		</Navbar>
+		<img class="main-logo" src="piratetext.png"></img>
+		<div class="center">
+		<p>
+			<input
+				value={prompt}
+				onChange={(e) => setPrompt(e.target.value)}
+				type="text"
+				placeholder="Enter The Prompt You Wish To Translate Here"
+			/>
+		</p>
+		<p>
+			<button disabled={isPending} onClick={translate}>
+				Translate
+			</button>
+			{error ? <p style={{ color: 'red' }}>{error}</p> : null}
+			</p>
+			<p class="text">{text}</p>
 			</div>
-		</div>
+			</div>
 		</>
 	);
 }
