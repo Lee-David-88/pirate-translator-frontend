@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=UnifrakturMaguntia);
+
 * {
 	margin: 0;
 	padding: 0;
@@ -21,7 +23,8 @@ code {
 }
 
 button,
-input[type='text'] {
+input[type='text'],
+input[type='password']{
 	background: none;
 	font: inherit;
 	outline: inherit;
@@ -39,49 +42,52 @@ p {
 	margin-top: 1rem;
 }
 
-.center {
+.container {
+	position: relative;
+  	text-align: center;
+	margin: 15%;
+}
+
+.background {
+	width: 400px;
+	height: 600px;
+}
+
+.content {
 	position: absolute;
-	top: 55%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 300px;
-	height: 400px;
-	border-style: solid;
-	color: #acdfeb;
-	text-align: center;
-	padding: 10px;
-	background-color: white;
+  	top: 40%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
 }
 
-.center h1 {
-	color: #003b61;
-	padding: 20px;
+.content h1 {
+	color: #6E260E;
+	font-size: 40px;
+	padding: 30px 10px 10px 10px;
+	font-family: "UnifrakturMaguntia";
 }
 
-.center input {
-	border: none;
-	background: none;
+.content input[type='text'], input[type='password']{
+	background: white;
 	display: block;
-	margin: 30px auto;
-	border: 2px solid;
-	border-color: #acdfeb;
-	padding: 14px 10px;
-	width: 200px;
+	margin: 40px auto;
+	font-size: 25px;
+	width: 250px;
 	outline: none;
-	color: black;
+	color: #6E260E;
+	font-family: "UnifrakturMaguntia";
 }
 
-.center button {
-	background: none;
+.content button {
+	background: white;
 	display: block;
-	margin: 50px auto;
-	text-align: center;
-	border: 2px solid;
-	border-color: #acdfeb;
-	padding: 14px 10px;
+	border: none;
+	margin: 25px auto;
+	font-size: 25px;
 	width: 150px;
 	outline: none;
-	color: black;
+	color: #6E260E;
+	font-family: "UnifrakturMaguntia";
 }
 
 body {
@@ -89,6 +95,10 @@ body {
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;
+}
+
+.text {
+	font-family: "UnifrakturMaguntia";
 }
 
 .main-logo {

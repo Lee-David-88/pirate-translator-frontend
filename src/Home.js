@@ -33,7 +33,7 @@ export default function Home() {
 
 	return (
 		<>
-			<h1>Pirate Translator</h1>
+			<h1 class="text">Pirate Translator</h1>
 			<p>Client ID: {client.id}</p>
 			{client.isAdmin ? (
 				<p>
@@ -56,7 +56,7 @@ export default function Home() {
 				</button>
 				{error ? <p style={{ color: 'red' }}>{error}</p> : null}
 			</p>
-			<p>{text}</p>
+			<p class="text">{text}</p>
 		</>
 	);
 }
