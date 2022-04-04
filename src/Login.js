@@ -3,6 +3,8 @@ import { Navigate } from 'react-router-dom';
 import api from './api';
 import { useClient, useSetClient } from './ClientContext';
 import { useSetToken } from './TokenContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav, NavDropdown, Container, Offcanvas, Form, FormControl, Button} from "react-bootstrap";
 
 export default function Login() {
 	const setToken = useSetToken();
@@ -38,6 +40,17 @@ export default function Login() {
 
 	return (
 		<>
+			<Navbar expand="lg">
+  <Container>
+    <Navbar.Brand href="/login">Pirate Translator</Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="me-auto">
+        <Nav.Link href="/docs">Documentation</Nav.Link>
+      </Nav>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
 			<img class="main-logo" src="piratetext.png"></img>
 			<div class="center">
 				<h1>Login</h1>
