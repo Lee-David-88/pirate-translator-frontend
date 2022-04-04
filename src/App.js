@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useIsToken } from './TokenContext';
+import { useIsToken, useSetToken } from './TokenContext';
 import { useClient, useSetClient } from './ClientContext';
 
 import api from './api';
@@ -12,6 +12,7 @@ import Documentation from './Documentation';
 
 export default function App() {
 	const isToken = useIsToken();
+	const setToken = useSetToken();
 	const client = useClient();
 	const setClient = useSetClient();
 
@@ -21,7 +22,8 @@ export default function App() {
 		if (needsClient) {
 			api
 				.get('/clients/self')
-				.then(async ({ data: client }) => setClient(client));
+				.then(async ({ data: client }) => setClient(client))
+				.catch(() => setToken(null));
 		}
 	}, [needsClient, setClient]);
 
