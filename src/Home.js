@@ -1,11 +1,8 @@
 import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import api from './api';
-
 import { useClient } from './ClientContext';
 import { Navbar, Nav, NavDropdown, Container, Offcanvas, Form, FormControl, Button} from "react-bootstrap";
-import { useSetToken } from './TokenContext';
-
 export default function Home() {
 	const client = useClient();
 
@@ -21,18 +18,19 @@ export default function Home() {
 			const {
 				data: { text },
 			} = await api.post('/translations', {
-				prompt,
+				prompt
 			});
 			setText(text);
 		} catch (err) {
 			setError(err.response?.data?.message ?? 'Failed to translate');
+			setIsPending(false);
 		}
-		setIsPending(false);
 	};
 
-	 if (!client) {
-	 	return <Navigate replace to="/login" />;
-	 }
+
+	if (!client) {
+		return <Navigate replace to="/login" />;
+	}
 
 	return (
 		<>
@@ -52,8 +50,8 @@ export default function Home() {
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
-			<img class="main-logo" src="piratetext.png"></img>
-			<div class="center">
+			<img class="main-logo" src="piratetext.png" alt="Pirate text title"></img>
+			<div class="center-home">
 				<img class="map" src="piratemap.png" alt="Pirate map"></img>
 				<div class="content-home">
 					<p>
@@ -69,8 +67,8 @@ export default function Home() {
 							Translate
 						</button>
 						{error ? <p style={{ color: 'red' }}>{error}</p> : null}
-					</p>
-					<p class="output-text">{text}</p>
+						</p>
+						<p class="output-text">{text}</p>
 				</div>
 			</div>
 		</div>
